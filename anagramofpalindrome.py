@@ -30,6 +30,34 @@ Examples::
 def is_anagram_of_palindrome(word):
     """Is the word an anagram of a palindrome?"""
 
+    # put letters in dictionary with k(word):v(count)
+    # extract all count values w/ .values()
+    # if any of values are odd more than once (1 occurence is ok to account
+    # for odd-numbered word) --> if so, return False
+
+    # EDGE CASE: 2-LETTER WORD
+    if len(word) == 2:
+        if word[0] != word[1]:
+            return False
+        else:
+            return True  # win fast method vs. continuing w/ rest of code
+
+    # obtain dict with k(letter):v(count) pairs
+    letter_count = {}
+
+    for letter in word:
+        letter_count[letter] = letter_count.get(letter, 0) + 1
+
+    # establish counting mechanism; if odd, +=1. If var > 1: return False
+    odd_number = 0
+
+    for count in letter_count.values():
+        if count % 2 != 0:
+            odd_number += 1
+        if odd_number >= 2:
+            return False
+
+    return True
 
 if __name__ == '__main__':
     import doctest
