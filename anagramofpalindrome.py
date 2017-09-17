@@ -59,7 +59,8 @@ def is_anagram_of_palindrome(word):
 
     return True
 
-    # RUNTIME: O(N)
+    # Runtime: O(n) related to touching each letter once. Could be O(n2)
+    # since 2nd part of code is touching each value from dict once too.
 
 if __name__ == '__main__':
     import doctest
